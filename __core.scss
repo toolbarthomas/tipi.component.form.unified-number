@@ -18,7 +18,10 @@
 
 			input {
 				//Turn Off Number Input Spinners
-				@include appearance(textfield);
+				@include appearance(none);
+				-moz-appearance: textfield;
+
+				width: 100%;
 
 				&::-webkit-inner-spin-button,
 				&::-webkit-outer-spin-button {

@@ -102,6 +102,10 @@ function setUnifiedNumber() {
 				}, 500);
 			},
 			'mouseup mouseleave touchend' : function(event) {
+				var unifiedNumber = getUnifiedNumber($(this), 'root', elements);
+				var unifiedNumberInput = getUnifiedNumber(unifiedNumber, 'input', elements);
+				unifiedNumberInput.blur();
+
 				if(typeof incrementTimeout != 'undefined') {
 					clearTimeout(incrementTimeout);
 				}
@@ -143,6 +147,10 @@ function setUnifiedNumber() {
 				}, 500);
 			},
 			'mouseup mouseleave touchend' : function(event) {
+				var unifiedNumber = getUnifiedNumber($(this), 'root', elements);
+				var unifiedNumberInput = getUnifiedNumber(unifiedNumber, 'input', elements);
+				unifiedNumberInput.blur();
+
 				if(typeof decrementTimeout != 'undefined') {
 					clearTimeout(decrementTimeout);
 				}
