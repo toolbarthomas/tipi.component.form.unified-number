@@ -1,0 +1,78 @@
+@mixin unified-number-style(
+	$selector: null,
+	$button-background: false,
+	$button-background--hover: false,
+	$button-border: solid 1px $border-color,
+	$button-border-color--hover: $base-color,
+	$button-border-radius: 50%,
+	$glyph-color: $base-color,
+	$glyph-color--hover: red,
+	$glyph-border-radius: false
+) {
+	@if $selector != false {
+		.number {
+			&#{$selector} {
+				.number-increment,
+				.number-decrement {
+					@if $button-background != false {
+						background: $button-background;
+					}
+
+					@if $button-background--hover != false {
+						.no-touchevents &:hover {
+							background: $button-background--hover;
+						}
+					}
+
+					@if $button-border != false {
+						border: $button-border;
+					}
+
+					@if $button-border-color--hover != false {
+						.no-touchevents &:hover {
+							border-color: $button-border-color--hover;
+						}
+					}
+
+					@if $button-border-radius != false {
+						border-radius: $button-border-radius;
+					}
+
+					@if $glyph-color != false{
+						@if $unified-number-control-button-css-glyph == true {
+							&:before,
+							&:after {
+								background: $glyph-color;
+							}
+						} @else {
+							.number-glyph {
+								color: $glyph-color;
+								fill: $glyph-color;
+							}
+						}
+					}
+
+					@if $glyph-color--hover != false{
+						.no-touchevents &:hover {
+							@if $unified-number-control-button-css-glyph == true {
+								&:before,
+								&:after {
+									background: $glyph-color--hover;
+
+									@if $glyph-border-radius == false {
+										border-radius: $glyph-border-radius;
+									}
+								}
+							} @else {
+								.number-glyph {
+									color: $glyph-color--hover;
+									fill: $glyph-color--hover;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

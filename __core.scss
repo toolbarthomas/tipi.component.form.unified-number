@@ -1,0 +1,174 @@
+@mixin core_form_unified-number {
+	.number {
+		@if $unified-number-transition == true {
+			@include transition(
+				(padding $unified-number-transition-speed $unified-number-transition-timing $unified-number-transition-delay)
+			);
+		}
+
+		&.__number--ready {
+			position: relative;
+			@if $unified-number-control-width != false {
+				@if $unified-number-control-position == "left" {
+					padding-left: $unified-number-control-width;
+				} @else {
+					padding-right: $unified-number-control-width;
+				}
+			}
+
+			input {
+				//Turn Off Number Input Spinners
+				@include appearance(textfield);
+
+				&::-webkit-inner-spin-button,
+				&::-webkit-outer-spin-button {
+					-webkit-appearance: none;
+					display: none;
+				}
+			}
+		}
+	}
+
+	.number-control {
+		display: none;
+		position: absolute;
+		top: 0;
+
+		@if $unified-number-control-position == "left" {
+			left: 0;
+
+			@if $unified-number-control-vertical-gutter != false {
+				padding-right: $unified-number-control-vertical-gutter;
+			}
+
+		} @else {
+			right: 0;
+
+			@if $unified-number-control-vertical-gutter != false {
+				padding-left: $unified-number-control-vertical-gutter;
+			}
+		}
+
+		height: 50%;
+
+		@if $unified-number-control-width != false {
+			width: $unified-number-control-width;
+		}
+
+		@if $unified-number-transition == true {
+			display: block;
+			opacity: 0;
+			visibility: hidden;
+			@include transform(
+				translate(100%, 0)
+			);
+
+			@include transition(
+				(opacity $unified-number-transition-speed $unified-number-transition-timing $unified-number-transition-delay),
+				(visibility 0s linear 0s),
+				(transform $unified-number-transition-speed $unified-number-transition-timing $unified-number-transition-delay)
+			);
+		}
+
+		.__number--ready & {
+			display: block;
+
+			@if $unified-number-transition == true {
+				opacity: 1;
+				visibility: visible;
+				@include transform(
+					translate(0)
+				);
+			}
+		}
+
+		@if $unified-number-control-horizontal-gutter != false {
+			padding-bottom: $unified-number-control-horizontal-gutter;
+		}
+
+		+ .number-control {
+			top: 50%;
+
+			@if $unified-number-control-horizontal-gutter != false {
+				padding-bottom: 0;
+				padding-top: $unified-number-control-horizontal-gutter;
+			}
+
+		}
+	}
+
+	.number-increment,
+	.number-decrement {
+		@include user-select(none);
+		display: none;
+		cursor: pointer;
+		position: relative;
+
+		@if $unified-number-control-position == "left" {
+			left: 0;
+		} @else {
+			right: 0;
+		}
+
+		@if $unified-number-control-button-width != false {
+			width: $unified-number-control-button-width;
+		}
+
+		@if $unified-number-control-button-height != false {
+			height: $unified-number-control-button-height;
+		}
+
+		@if $unified-number-control-button-css-glyph == true {
+			text-align: left;
+			overflow: hidden;
+			text-indent: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.__number--ready & {
+			display: block;
+		}
+
+		@if $unified-number-control-button-css-glyph == true{
+			&:before,
+			&:after {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				display: block;
+				content: " ";
+				position: absolute;
+				@include transform(translate(-50%, -50%))
+			}
+
+			&:before {
+				width: $unified-number-control-button-css-glyph-width;
+				height: $unified-number-control-button-css-glyph-height;
+			}
+
+			&:after {
+				width: $unified-number-control-button-css-glyph-height;
+				height: $unified-number-control-button-css-glyph-width;
+			}
+		} @esle {
+			.number-glyph {
+				fill: inherit;
+				color: inherit;
+			}
+		}
+	}
+
+	.number-increment {
+		top: 0;
+	}
+
+	.number-decrement {
+		bottom: 0;
+		@if $unified-number-control-button-css-glyph {
+			&:after {
+				display: none;
+			}
+		}
+	}
+}

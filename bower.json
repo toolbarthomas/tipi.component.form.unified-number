@@ -1,0 +1,21 @@
+{
+  "name": "tipi.component.form.unified-checkbox",
+  "homepage": "https://github.com/toolbarthomas/tipi.component.form.unified-checkbox",
+  "authors": [
+    "Thomas van der Velde <contact@toolbarthomas.net>"
+  ],
+  "description": "Javascript component for styling number inputs",
+  "keywords": [
+    "toolbarthomas",
+    "modular",
+    "tipi",
+    "form",
+    "input",
+    "number"
+  ],
+  "license": "MIT",
+  "main": "_tipi.component.form.unified-number.scss",
+  "dependencies": {
+    "tipi.tool.form.validation": "^1.0.0"
+  }
+}
