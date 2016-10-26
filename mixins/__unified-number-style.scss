@@ -2,11 +2,11 @@
 	$selector: null,
 	$button-background: false,
 	$button-background--hover: false,
-	$button-border: solid 1px $border-color,
-	$button-border-color--hover: $base-color,
-	$button-border-radius: 50%,
-	$glyph-color: $base-color,
-	$glyph-color--hover: red,
+	$button-border: false,
+	$button-border-color--hover: false,
+	$button-border-radius: false,
+	$glyph-color: false,
+	$glyph-color--hover: false,
 	$glyph-border-radius: false
 ) {
 	@if $selector != false {

@@ -79,8 +79,6 @@ function setUnifiedNumber() {
 			},
 			click : function(event) {
 				event.preventDefault();
-				var unifiedNumber = getUnifiedNumber($(this), 'root', elements);
-				unifiedNumber.trigger('tipi.unifiedNumber.increment', [unifiedNumber]);
 
 				//Remove pressed state on touch devices
 				$(this).blur();
@@ -102,6 +100,8 @@ function setUnifiedNumber() {
 				}, 500);
 			},
 			'mouseup mouseleave touchend' : function(event) {
+				event.preventDefault();
+
 				var unifiedNumber = getUnifiedNumber($(this), 'root', elements);
 				var unifiedNumberInput = getUnifiedNumber(unifiedNumber, 'input', elements);
 				unifiedNumberInput.blur();
@@ -124,8 +124,6 @@ function setUnifiedNumber() {
 			},
 			'click' : function(event) {
 				event.preventDefault();
-				var unifiedNumber = getUnifiedNumber($(this), 'root', elements);
-				unifiedNumber.trigger('tipi.unifiedNumber.decrement', [unifiedNumber]);
 
 				//Remove pressed state on touch devices
 				$(this).blur();
@@ -139,6 +137,7 @@ function setUnifiedNumber() {
 				if(typeof decrementTimeout != 'undefined') {
 					clearTimeout(decrementTimeout);
 				}
+
 
 				decrementTimeout = setTimeout(function() {
 					decrementInterval = setInterval(function() {
@@ -220,6 +219,7 @@ function parseUnifiedNumberData(input, attributes) {
 		min : input.attr(attributes.min),
 		max : input.attr(attributes.max)
 	};
+
 
 	//Check if the default value is an actual integer or set it to 0.
 	if(parseFloat(inputData.value) == NaN || inputData.value == '') {
