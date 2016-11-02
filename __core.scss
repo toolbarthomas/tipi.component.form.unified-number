@@ -155,7 +155,7 @@
 				width: $unified-number-control-button-css-glyph-height;
 				height: $unified-number-control-button-css-glyph-width;
 			}
-		} @esle {
+		} @else {
 			.number-glyph {
 				fill: inherit;
 				color: inherit;
