@@ -188,7 +188,7 @@ function incrementUnifiedNumber(unifiedNumber, elements, states, attributes) {
 	var input = getUnifiedNumber(unifiedNumber, 'input', elements);
 	var value = parseUnifiedNumberData(input, attributes).value + parseUnifiedNumberData(input, attributes).step;
 
-	if(parseUnifiedNumberData(input, attributes).max != false) {
+	if(parseUnifiedNumberData(input, attributes).max !== false) {
 		if(value >= parseUnifiedNumberData(input, attributes).max) {
 			value = parseUnifiedNumberData(input, attributes).max;
 		}
